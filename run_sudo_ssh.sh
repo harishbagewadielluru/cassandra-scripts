@@ -1,8 +1,21 @@
 #!/bin/bash
 
-inventory=`cat $1`
+# ------------------------------------------------------------------
+# Author        : Harish Bagewadi Elluru
+# Title         : SUDO SSH
+# Description   : Running SUDO SSH commands in a cluster
+# ------------------------------------------------------------------
 
-for node in $inventory; do
+USAGE="Usage: run_sudo_ssh.sh nodes.list <command to execute>"
+
+if [ $# -lt 2 ] ; then
+    echo $USAGE
+    exit 1;
+fi
+
+nodes=`cat $1`
+
+for node in $nodes; do
     echo " ******************************* "
     echo "Working on Server : $node "
     echo " "
