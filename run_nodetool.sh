@@ -1,10 +1,10 @@
 #!/bin/bash
 
-inventory=`cat $1`
+nodes=`nodetool status | grep UN  | awk '{print $2}'`
 
-for node in $inventory; do
+for node in $nodes; do
     echo " ******************************* "
-    echo "Working on Server : $node "
+    echo "Server : $node "
     echo " "
-    nodetool -h $node $2 $3 $4 $5
+    nodetool -h $node $1 $2 $3 $4 $5
 done
