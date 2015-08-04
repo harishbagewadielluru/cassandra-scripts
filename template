@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# ------------------------------------------------------------------
+# Author        : Harish Bagewadi Elluru
+# Title         : 
+# Description   : 
+# ------------------------------------------------------------------
+
+USAGE="Usage: template nodes.list <command to execute>"
+
+if [ $# -lt 2 ] ; then
+    echo $USAGE
+    exit 1;
+fi
+
+nodes=`cat $1`
+
+for node in $nodes; do
+    echo " ******************************* "
+    echo "Working on Server : $node "
+    echo " "
+done
