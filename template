@@ -2,11 +2,11 @@
 
 # ------------------------------------------------------------------
 # Author        : Harish Bagewadi Elluru
-# Title         : SSH
-# Description   : Running SSH commands in a cluster
+# Title         : 
+# Description   : 
 # ------------------------------------------------------------------
 
-USAGE="Usage: run_ssh.sh nodes.list <command to execute>"
+USAGE="Usage: template nodes.list <command to execute>"
 
 if [ $# -lt 2 ] ; then
     echo $USAGE
@@ -19,5 +19,4 @@ for node in $nodes; do
     echo " ******************************* "
     echo "Working on Server : $node "
     echo " "
-    ssh $node $2 $3 $4 $5
 done
