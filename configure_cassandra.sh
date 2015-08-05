@@ -29,3 +29,5 @@ sudo sed -i "s/# protocol:.*/protocol: $PROTOCOL/" cassandra.yaml
 sudo sed -i "s/enabled:.*/enabled: $ENABLED/" cassandra.yaml
 sudo sed -i "s/# num_tokens: 256/num_tokens: 256/" cassandra.yaml
 sudo sed -i "s/initial_token:/#initial_token:/" cassandra.yaml
+sudo cp /etc/dse/cassandra/cassandra.yaml /etc/dse/cassandra/cassandra.yaml.original
+sudo cp cassandra.yaml /etc/dse/cassandra/
