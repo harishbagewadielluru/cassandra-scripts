@@ -24,20 +24,22 @@ echo "Deleting saved_caches files..."
 sudo rm -rf /mnt/cassandra/saved_files/*
 
 echo "Deleting data files..."
-total=`ls -l /mnt/cassandra/data/$keyspace/*/*-jb-* | wc -l`
-echo "Total: $total"
-sudo rm -rf /mnt/cassandra/data/$keyspace/*/*-jb-*
-
-echo "restoring snapshot files..."
-temp=`ls -l /mnt/cassandra/data/$keyspace/*/$snapshot/*-jb-* | wc -l`
-echo "Total: $temp"
+echo "Total: `ls -l /mnt/cassandra/data/$keyspace/*/*-jb-* | wc -l`"
 for cf in $file; do
     echo " ******************************* "
     echo "Working on $cf "
     echo " "
-    sudo cp /mnt/cassandra/data/$keyspace/$cf/snapshots/$snapshot/*-jb-* /mnt/cassandra/data/$keyspace/$n/
+    sudo rm -rf /mnt/cassandra/data/$keyspace/$cf/*-jb-*
 done
 
-echo "Restore complete."
-final=`ls -l /mnt/cassandra/data/$keyspace/*/*-jb-* | wc -l`
-echo "Total: $final"
+echo "restoring snapshot files..."
+echo "Total: `ls -l /mnt/cassandra/data/$keyspace/*/snapshots/$snapshot/*-jb-* | wc -l`"
+for cf in $file; do
+    echo " ******************************* "
+    echo "Working on $cf "
+    echo " "
+    sudo cp /mnt/cassandra/data/$keyspace/$cf/snapshots/$snapshot/*-jb-* /mnt/cassandra/data/$keyspace/$cf/
+done
+
+echo "Restore complete!"
+echo "Total: `ls -l /mnt/cassandra/data/$keyspace/*/*-jb-* | wc -l`"
