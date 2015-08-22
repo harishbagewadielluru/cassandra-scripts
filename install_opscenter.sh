@@ -9,7 +9,7 @@ fi
 username=$1
 password=$2
 reponame=datastax
-url=http://username:password@rpm.datastax.com/enterprise
+url=http://$username:$password@rpm.datastax.com/enterprise
 version=$3
 echo "Creating Datastax Repo..."
 sudo touch /etc/yum.repos.d/$reponame.repo
