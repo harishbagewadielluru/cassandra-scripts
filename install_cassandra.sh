@@ -1,8 +1,8 @@
 #!/bin/bash
 
 reponame=datastax
-url=http://username:password@rpm.datastax.com/enterprise
-version=$1
+url=http://$1:$2@rpm.datastax.com/enterprise
+version=$3
 echo "Creating Datastax Repo..."
 sudo touch /etc/yum.repos.d/$reponame.repo
 sudo chmod a+w /etc/yum.repos.d/$reponame.repo
